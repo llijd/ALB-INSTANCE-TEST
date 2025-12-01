@@ -16,6 +16,6 @@ mkdir /disk1
 echo `blkid /dev/vdb1 | awk '{print $2}' | sed 's/\\\"//g'` /disk1 ext4 defaults 0 0 >> /etc/fstab
 mount -a
 # 这里配置安装脚本
-yum install -y nginx
+apt-get install -y nginx
 # 配置启动脚本
 /usr/sbin/nginx
