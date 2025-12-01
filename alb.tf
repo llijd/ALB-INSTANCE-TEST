@@ -1,4 +1,4 @@
-  # ==============================
+# ==============================
 # 1. Terraform 版本与 Provider 约束
 # ==============================
 terraform {
@@ -181,15 +181,15 @@ resource "alicloud_instance" "main" {
   # 计费与保护
   instance_charge_type = "PostPaid"  # 按量付费
   deletion_protection  = false       # 按需开启（true=禁止误删）
-  user_data									 = file("${path.cwd}/user-data.sh")
-  
-# 返回Nginx的IP地址
-output "nginx_ip" {
-  value										 	 = "http://${alicloud_instance.instance.public_ip}:8080"
-}
+  user_data            = file("${path.cwd}/user-data.sh")
+}  # 修复：添加缺失的闭合大括号
+
 # ==============================
 # 8. 输出信息（部署后查看）
 # ==============================
+# 修复：删除无效的 nginx_ip 输出（原引用错误且ECS无公网IP）
+# 如需访问Nginx，可通过VPC内网或后续配置ALB实现
+
 output "ecs_instances_info" {
   value = [
     for idx, instance in alicloud_instance.main : {
