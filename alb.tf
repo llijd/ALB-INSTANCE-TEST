@@ -43,7 +43,7 @@ variable "instance_type" {
 # 修复1：变量名统一为复数（target_zone_ids），与引用一致
 variable "target_zone_ids" {
   type        = list(string)
-  default     = ["cn-beijing-a", "cn-beijing-c"]  # 两个不同可用区
+  default     = ["cn-beijing-f", "cn-beijing-g"]  # 两个不同可用区
   description = "可用区列表（每个可用区部署1个子网+1台ECS）"
 }
 
