@@ -113,7 +113,7 @@ resource "alicloud_security_group_rule" "allow_intranet_ssh" {
   port_range        = "22/22"
   priority          = 1
   security_group_id = alicloud_security_group.main.id
-  cidr_ip           = alicloud_vpc.main.cidr_block
+  cidr_ip           = 0.0.0.0/0
 }
 
 # 规则2：放行内网 HTTP（80端口）
