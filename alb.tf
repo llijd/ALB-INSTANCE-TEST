@@ -125,7 +125,7 @@ resource "alicloud_security_group_rule" "allow_intranet_http" {
   port_range        = "80/80"
   priority          = 2
   security_group_id = alicloud_security_group.main.id
-  cidr_ip           = alicloud_vpc.main.cidr_block
+  cidr_ip           = 0.0.0.0/0
 }
 
 # 规则3：放行内网 HTTPS（443端口）
@@ -137,7 +137,7 @@ resource "alicloud_security_group_rule" "allow_intranet_https" {
   port_range        = "443/443"
   priority          = 3
   security_group_id = alicloud_security_group.main.id
-  cidr_ip           = alicloud_vpc.main.cidr_block
+  cidr_ip           = 0.0.0.0/0
 }
 
 # 规则4：放行内网出方向流量
